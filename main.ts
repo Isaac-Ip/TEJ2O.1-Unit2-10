@@ -69,4 +69,3 @@ input.onButtonPressed(Button.A, function() {
     neopixelStrip.show()
     basic.showIcon(IconNames.Happy)
 })
-
