@@ -6,7 +6,7 @@
 */
 
 //variables
-let lightLevel = 0
+let amountOfLight: number
 let neopixelStrip: neopixel.Strip = null
 
 //cleanup
@@ -19,45 +19,54 @@ neopixelStrip.setPixelColor(3, neopixel.colors(NeoPixelColors.Black))
 neopixelStrip.show()
 basic.showIcon(IconNames.Happy)
 
-lightLevel = input.lightLevel()
+// light up leds
+input.onButtonPressed(Button.A, function() {
+    // get light level
+    amountOfLight = input.lightLevel()
 
-//light up nothing
-if (lightLevel <= 51) {
-    // show nothing
-}
+    // show light level
+    basic.showNumber(amountOfLight)
 
-// light up 1 led
-if (lightLevel > 52) {
-    neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.White))
+    if (amountOfLight <= 51) {
+        // show nothing
+    }
+
+    // light up 1 led
+    if (amountOfLight > 52) {
+        neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.White))
+        neopixelStrip.show()
+    }
+
+    // light up 2 leds
+    if (amountOfLight > 104) {
+        neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.White))
+        neopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.White))
+        neopixelStrip.show()
+    }
+
+    // light up 3 leds
+    if (amountOfLight > 156) {
+        neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.White))
+        neopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.White))
+        neopixelStrip.setPixelColor(2, neopixel.colors(NeoPixelColors.White))
+        neopixelStrip.show()
+    }
+
+    // light up 4 leds
+    if (amountOfLight > 208) {
+        neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.White))
+        neopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.White))
+        neopixelStrip.setPixelColor(2, neopixel.colors(NeoPixelColors.White))
+        neopixelStrip.setPixelColor(3, neopixel.colors(NeoPixelColors.White))
+        neopixelStrip.show()
+    }
+
+    basic.pause(2000)
+    neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.Black))
+    neopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.Black))
+    neopixelStrip.setPixelColor(2, neopixel.colors(NeoPixelColors.Black))
+    neopixelStrip.setPixelColor(3, neopixel.colors(NeoPixelColors.Black))
     neopixelStrip.show()
-}
-
-// light up 2 leds
-if (lightLevel > 104) {
-    neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.White))
-    neopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.White))
-    neopixelStrip.show()
-}
-
-// light up 3 leds
-if (lightLevel > 156) {
-    neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.White))
-    neopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.White))
-    neopixelStrip.setPixelColor(2, neopixel.colors(NeoPixelColors.White))
-    neopixelStrip.show()
-}
-
-// light up 4 leds
-if (lightLevel > 208) {
-    neopixelStrip.setPixelColor(0, neopixel.colors(NeoPixelColors.White))
-    neopixelStrip.setPixelColor(1, neopixel.colors(NeoPixelColors.White))
-    neopixelStrip.setPixelColor(2, neopixel.colors(NeoPixelColors.White))
-    neopixelStrip.setPixelColor(3, neopixel.colors(NeoPixelColors.White))
-    neopixelStrip.show()
-}
-
-
-
-
-
+    basic.showIcon(IconNames.Happy)
+})
 
